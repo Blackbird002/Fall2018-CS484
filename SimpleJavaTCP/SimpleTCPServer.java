@@ -22,7 +22,9 @@ public class SimpleTCPServer {
                 Socket socket = listener.accept();
                 try {
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                    out.println("Hello, this is the Simple TCP Server! Today's date is: " + new Date().toString());
+                    String message = "Hello, this is the Simple TCP Server! Today's date is: " + new Date().toString() + 
+                    " Your IP is: " + socket.getRemoteSocketAddress().toString() + " Bye!";
+                    out.println(message);              
                 } finally {
                     //Always executes when try block exits
                     socket.close();
