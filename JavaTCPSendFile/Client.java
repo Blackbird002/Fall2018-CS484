@@ -48,15 +48,19 @@ public class Client {
 
         byte[] bytes = new byte[1024];
 
-        //Create the input and output streams
+        //Used to send the stream of bytes to Sever
         InputStream inStream = new FileInputStream(sourceDirectory);
+
+        //Used to open the file and extract bytes
         OutputStream outStream = mysocket.getOutputStream();
 
         int count;
         while ((count = inStream.read(bytes)) > 0) {
+            //Send the bytes to the outStream
             outStream.write(bytes, 0, count);
         }
 
+        //Done sending the bytes
         outStream.close();
         inStream.close();
         mysocket.close();
